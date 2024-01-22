@@ -1,0 +1,1 @@
+# Functionalities-for-a-stock-prediction-system
