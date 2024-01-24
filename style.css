@@ -50,3 +50,17 @@ h2 {
     margin-right: auto;
     width: 50%;
   }
+  #tableid {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #tableid th, #tableid td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  #tableid th {
+    background-color: #f2f2f2;
+  }
