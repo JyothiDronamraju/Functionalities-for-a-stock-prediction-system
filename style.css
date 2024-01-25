@@ -96,3 +96,17 @@ button:hover {
 #dashboard {
     display: none;
 }
+
+footer.footer {
+    position: fixed; /* or position: absolute; */
+    bottom: 0;
+    height: 100px; /* adjust as needed */
+    width: 100%;
+    background-color: #333333;
+}
+
+p.copyright {
+    color: #fff;
+    line-height: 40px;
+    font-size: 0.7em;
+}
