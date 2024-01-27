@@ -46,3 +46,16 @@ Description: The Yahoo Finance API allows fetching historical stock data directl
 Usage:
 from yfinance import download```
 
+# Machine Learning Algorithm
+
+Random Forest Regression
+Description: Random Forest Regression is a powerful ensemble learning algorithm that excels in predicting stock prices by leveraging the collective intelligence of multiple decision trees. Each tree in the forest independently predicts the stock price, and the final prediction is an aggregation of these individual predictions. This algorithm is robust, capable of handling non-linear relationships, and helps mitigate overfitting, making it an excellent choice for stock price prediction tasks.
+
+Usage:
+from sklearn.ensemble import RandomForestRegressor
+
+
+# Conclusion
+The Stock Prediction System relies on a combination of Python libraries for data manipulation, visualization, and machine learning. The choice of the machine learning algorithm, such as Random Forest Regression, depends on the complexity of the prediction task. The system is designed to utilize historical stock data to train and evaluate the model's performance in predicting future stock prices.
+
+
