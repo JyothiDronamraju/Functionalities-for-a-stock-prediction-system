@@ -1,2 +1,24 @@
-hi
+This documentation outlines the process of collecting historical stock data from Yahoo Finance and other relevant financial APIs for the Stock Prediction System. The collected data will serve as the foundation for analysis, trend identification, and prediction generation.
+
+Data Sources
+1. Yahoo Finance API
+Overview
+Endpoint: Yahoo Finance API
+Purpose: Collect historical stock prices.
+Access: Public API, no authentication required.
+Usage Example
+python
+Copy code
+import yfinance as yf
+
+# Specify the stock symbol and date range
+symbol = "AAPL"
+start_date = "2022-01-01"
+end_date = "2022-12-31"
+
+# Fetch historical data
+stock_data = yf.download(symbol, start=start_date, end=end_date)
+
+# Display the retrieved data
+print(stock_data)
   
