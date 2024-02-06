@@ -10,5 +10,14 @@ const dashboardSection = document.getElementById('dashboard');
             loginForm.style.display = 'none';
             updateStockInfo();
         }
+
     }
-    
+    function updateStockInfo() {
+        const stockData = [
+            { name: 'APPLE', price: 120.50, projection: 130.00 },
+            { name: 'TESLA', price: 200.50, projection: 220.00 },
+            { name: 'MICROSOFT', price: 200.50, projection: 250.00 },
+            { name: 'GOOGLE', price: 200.50, projection: 220.00 },
+            { name: 'AWS', price: 230.50, projection: 270.00 }
+        ];
+    }
