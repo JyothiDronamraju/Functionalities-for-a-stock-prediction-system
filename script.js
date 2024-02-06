@@ -1,11 +1,14 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const loginForm = document.querySelector('#login form');
-    const dashboardSection = document.querySelector('#dashboard');
+const dashboardSection = document.getElementById('dashboard');
+    const stockInfoDiv = document.getElementById('stock-info');
 
-    loginForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        
-        dashboardSection.style.display = 'block';
-        loginForm.style.display = 'none';
-    });
-});
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (username && password) {
+            dashboardSection.style.display = 'block';
+            loginForm.style.display = 'none';
+            updateStockInfo();
+        }
+    }
+
