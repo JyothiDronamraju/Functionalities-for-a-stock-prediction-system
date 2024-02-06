@@ -20,4 +20,11 @@ const dashboardSection = document.getElementById('dashboard');
             { name: 'GOOGLE', price: 200.50, projection: 220.00 },
             { name: 'AWS', price: 230.50, projection: 270.00 }
         ];
-    }
+        stockData.forEach(stock => {
+            const stockDiv = document.createElement('div');
+            stockDiv.className = 'stock-item';
+            stockDiv.innerHTML = `<div>STOCK NAME AND PRICE: ${stock.name} - $${stock.price}</div>
+                                  <div>STOCK PROJECTION: $${stock.projection}</div>`;
+            stockInfoDiv.appendChild(stockDiv);
+        });
+    };
