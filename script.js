@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     loginForm.addEventListener('submit', function (event) {
         event.preventDefault();
+        
         dashboardSection.style.display = 'block';
         loginForm.style.display = 'none';
     });
