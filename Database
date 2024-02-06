@@ -68,9 +68,3 @@ print(stock_data[['Close', 'Close_normalized']])
 Conclusion
 
 This documentation furnishes an outline and instances of the preprocessing steps for historical stock data obtained from Yahoo Finance and other financial APIs. The data must undergo cleaning, handling missing values, normalization, and scaling to guarantee its suitability for subsequent analysis and prediction generation. Modify the provided code snippets according to the specific requirements and choices of APIs in your project.
-
-
-
-
-
-
