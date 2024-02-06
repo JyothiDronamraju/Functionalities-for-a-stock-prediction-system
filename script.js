@@ -11,4 +11,4 @@ const dashboardSection = document.getElementById('dashboard');
             updateStockInfo();
         }
     }
-
+    
