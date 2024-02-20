@@ -1,3 +1,5 @@
+const searchStockInput = document.getElementById('searchStock').value.trim();
+
 const dashboardSection = document.getElementById('dashboard');
     const stockInfoDiv = document.getElementById('stock-info');
 
