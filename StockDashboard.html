@@ -44,6 +44,32 @@
         <div id="stock-price">STOCK NAME AND PRICE : AWS$230.50</div>
         <div id="stock-projection">STOCK PROJECTION: $270.00</div>
     </section>
+    <script>
+        function fetchPredictedPrices() {
+           
+            const predictedPrices = {
+                'Microsoft': 250.00,
+
+            };
+            return predictedPrices;
+        }
+
+        function displayPredictedPrices() {
+            const predictedPrices = fetchPredictedPrices();
+            const tableBody = document.getElementById('stock-data-body');
+
+            for (const stock in predictedPrices) {
+                const row = tableBody.insertRow();
+                const cellName = row.insertCell(0);
+                const cellPrice = row.insertCell(1);
+                const cellPredictedPrice = row.insertCell(2);
+
+                cellName.innerText = stock;
+                cellPrice.innerText = "$" + Math.random() * 1000; 
+                cellPredictedPrice.innerText = "$" + predictedPrices[stock]; 
+            }
+        }
+    </script>
     <script src="script.py"></script>
     <footer class="footer">
         <div class="footerContainer">
