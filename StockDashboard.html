@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Stock Dashboard</title>
 </head>
+
 <body>
     <header>
         <h1>Stock Dashboard</h1>
     </header>
-    
+
     <section id="login">
         <img src="image.png" width="32px" height="32px" alt="loginimage">
         <form action="#" method="post">
@@ -22,34 +24,22 @@
 
             <button type="submit">Login</button>
         </form>
+
+        <div id="links">
+            <p><a href="register.html">Register</a></p>
+            <p><a href="forgot-password.html">Forgot Password?</a></p>
+        </div>
     </section>
+
     <section id="dashboard" style="display: none;">
         <h2>Stock Price and Projection</h2>
-        <div id="stock-price">STOCK NAME AND PRICE : APPLE-$120.50</div>
-        <div id="stock-projection">STOCK PROJECTION: $130.00</div>
+        <!-- Your stock dashboard content goes here -->
     </section>
-    <section id="dashboard" style="display: none;">
-        <div id="stock-price">STOCK NAME AND PRICE : TESLA$200.50</div>
-        <div id="stock-projection">STOCK PROJECTION: $220.00</div>
-    </section>
-    <section id="dashboard" style="display: none;">
-        <div id="stock-price">STOCK NAME AND PRICE : MICROSOFT$200.50</div>
-        <div id="stock-projection">STOCK PROJECTION: $250.00</div>
-    </section>
-    <section id="dashboard" style="display: none;">
-        <div id="stock-price">STOCK NAME AND PRICE : GOOGLE$200.50</div>
-        <div id="stock-projection">STOCK PROJECTION: $220.00</div>
-    </section>
-    <section id="dashboard" style="display: none;">
-        <div id="stock-price">STOCK NAME AND PRICE : AWS$230.50</div>
-        <div id="stock-projection">STOCK PROJECTION: $270.00</div>
-    </section>
+
     <script>
         function fetchPredictedPrices() {
-           
             const predictedPrices = {
                 'Microsoft': 250.00,
-
             };
             return predictedPrices;
         }
@@ -65,8 +55,8 @@
                 const cellPredictedPrice = row.insertCell(2);
 
                 cellName.innerText = stock;
-                cellPrice.innerText = "$" + Math.random() * 1000; 
-                cellPredictedPrice.innerText = "$" + predictedPrices[stock]; 
+                cellPrice.innerText = "$" + Math.random() * 1000;
+                cellPredictedPrice.innerText = "$" + predictedPrices[stock];
             }
         }
     </script>
@@ -77,4 +67,5 @@
         </div>
     </footer>
 </body>
+
 </html>
