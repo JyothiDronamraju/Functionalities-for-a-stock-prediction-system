@@ -1,4 +1,14 @@
 users = {'admin': 'password'}
+from flask import Flask, render_template, send_from_directory
+
+app = Flask(_name_)
+
+@app.route('/')
+def index():
+    return render_template('stockdashboard.html')
+    @app.route('/homepage')
+def homepage():
+    return render_template('homepage.html')
 
 def login():
     username = input("Enter your username: ")
