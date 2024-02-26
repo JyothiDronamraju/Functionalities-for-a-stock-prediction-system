@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Stock Dashboard</title>
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Check if the login credentials are correct
+            if (username === "admin" && password === "12345") {
+                // Display the dashboard section and hide the login section
+                document.getElementById("login").style.display = "none";
+                document.getElementById("dashboard").style.display = "block";
+            } else {
+                alert("Invalid username or password. Please try again.");
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -13,14 +28,15 @@
     
     <section id="login">
         <img src="image.png" width="32px" height="32px" alt="loginimage">
-        <form id="loginForm">
+        <form>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
-            <button type="submit">Login</button>
+            <!-- Call the login function when the button is clicked -->
+            <button type="button" onclick="login()">Login</button>
         </form>
     </section>
 
@@ -28,27 +44,19 @@
         <h2>Stock Price and Projection</h2>
         <div id="stock-price">STOCK NAME AND PRICE : APPLE-$120.50</div>
         <div id="stock-projection">STOCK PROJECTION: $130.00</div>
+        
+        <div id="stock-price">STOCK NAME AND PRICE : TESLA$200.50</div>
+        <div id="stock-projection">STOCK PROJECTION: $220.00</div>
+        
+        <div id="stock-price">STOCK NAME AND PRICE : MICROSOFT$200.50</div>
+        <div id="stock-projection">STOCK PROJECTION: $250.00</div>
+        
+        <div id="stock-price">STOCK NAME AND PRICE : GOOGLE$200.50</div>
+        <div id="stock-projection">STOCK PROJECTION: $220.00</div>
+        
+        <div id="stock-price">STOCK NAME AND PRICE : AWS$230.50</div>
+        <div id="stock-projection">STOCK PROJECTION: $270.00</div>
     </section>
-
-    <script>
-        // Add event listener to the login form
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
-
-            // Get the input values
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-
-            // Check if username and password match
-            if (username === 'admin' && password === '12345') {
-                // Show the dashboard section
-                document.getElementById('login').style.display = 'none';
-                document.getElementById('dashboard').style.display = 'block';
-            } else {
-                alert('Invalid username or password. Please try again.');
-            }
-        });
-    </script>
 
     <footer class="footer">
         <div class="footerContainer">
