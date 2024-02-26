@@ -13,7 +13,7 @@
     
     <section id="login">
         <img src="image.png" width="32px" height="32px" alt="loginimage">
-        <form action="#" method="post">
+        <form action="/login" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
 
@@ -23,28 +23,31 @@
             <button type="submit">Login</button>
         </form>
     </section>
-    <section id="dashboard" style="display: none;">
+
+    <section class="dashboard" style="display: none;">
         <h2>Stock Price and Projection</h2>
-        <div id="stock-price">STOCK NAME AND PRICE : APPLE-$120.50</div>
-        <div id="stock-projection">STOCK PROJECTION: $130.00</div>
+        <div class="stock-info">STOCK NAME AND PRICE : APPLE-$120.50</div>
+        <div class="stock-info">STOCK PROJECTION: $130.00</div>
     </section>
-    <section id="dashboard" style="display: none;">
-        <div id="stock-price">STOCK NAME AND PRICE : TESLA$200.50</div>
-        <div id="stock-projection">STOCK PROJECTION: $220.00</div>
+    <section class="dashboard" style="display: none;">
+        <div class="stock-info">STOCK NAME AND PRICE : TESLA$200.50</div>
+        <div class="stock-info">STOCK PROJECTION: $220.00</div>
     </section>
-    <section id="dashboard" style="display: none;">
-        <div id="stock-price">STOCK NAME AND PRICE : MICROSOFT$200.50</div>
-        <div id="stock-projection">STOCK PROJECTION: $250.00</div>
+    <section class="dashboard" style="display: none;">
+        <div class="stock-info">STOCK NAME AND PRICE : MICROSOFT$200.50</div>
+        <div class="stock-info">STOCK PROJECTION: $250.00</div>
     </section>
-    <section id="dashboard" style="display: none;">
-        <div id="stock-price">STOCK NAME AND PRICE : GOOGLE$200.50</div>
-        <div id="stock-projection">STOCK PROJECTION: $220.00</div>
+    <section class="dashboard" style="display: none;">
+        <div class="stock-info">STOCK NAME AND PRICE : GOOGLE$200.50</div>
+        <div class="stock-info">STOCK PROJECTION: $220.00</div>
     </section>
-    <section id="dashboard" style="display: none;">
-        <div id="stock-price">STOCK NAME AND PRICE : AWS$230.50</div>
-        <div id="stock-projection">STOCK PROJECTION: $270.00</div>
+    <section class="dashboard" style="display: none;">
+        <div class="stock-info">STOCK NAME AND PRICE : AWS$230.50</div>
+        <div class="stock-info">STOCK PROJECTION: $270.00</div>
     </section>
-    <script src="script.py"></script>
+
+    <script src="script.js"></script>
+    
     <footer class="footer">
         <div class="footerContainer">
             <p class="copyright">© Stock Prediction using ML</p>
