@@ -1,12 +1,13 @@
 users = {'admin': 'password'}
 from flask import Flask, render_template, send_from_directory
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 @app.route('/')
 def index():
     return render_template('stockdashboard.html')
-    @app.route('/homepage')
+
+@app.route('/homepage')
 def homepage():
     return render_template('homepage.html')
 
@@ -38,5 +39,5 @@ def main():
     display_dashboard(stock_price, stock_projection)
 
 if __name__ == '__main__':
+    app.run(debug=True)  # Added to run the Flask app
     main()
-    
