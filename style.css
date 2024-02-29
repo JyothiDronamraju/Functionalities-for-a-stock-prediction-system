@@ -115,3 +115,7 @@ header h1 {
     max-width: 800px; /* Adjust the max-width as needed */
 }
 
+section {
+    max-width: 800px; 
+    margin: 0 auto;
+}
