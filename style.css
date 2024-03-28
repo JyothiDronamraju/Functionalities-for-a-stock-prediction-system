@@ -165,7 +165,7 @@ header {
 }
 
 .container {
-	height: 600px;
+	height: auto;
 	width: 500px;
 	background-color: white;
 	box-shadow: 8px 8px 20px rgb(128, 128, 128);
@@ -391,4 +391,3 @@ header {
 		font-size: 19px;
 	}
 }
-
