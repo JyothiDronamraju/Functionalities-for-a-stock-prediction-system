@@ -31,7 +31,7 @@ const dashboardSection = document.getElementById('dashboard');
         const searchStockInput = document.getElementById('searchStock').value.trim();
         stockDataBody.innerHTML = '';
         try {
-            const response = await fetch(/api/stock-predictions?stockName=${searchStockInput});
+            const response = await fetch(`/api/stock-predictions?stockName=${searchStockInput}`);
             const data = await response.json();
         } catch (error) {
             console.error('Error:', error);
