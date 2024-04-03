@@ -1,4 +1,4 @@
-users = {'admin': 'password'}
+USERSDETAILS = {'Admin': 'password123'}
 from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
@@ -12,14 +12,14 @@ def homepage():
     return render_template('homepage.html')
 
 def login():
-    username = input("Enter your username: ")
-    password = input("Enter your password: ")
+    username = input("Enter username: ")
+    password = input("Enter password: ")
 
-    if username in users and users[username] == password:
-        print("Login successful.")
+    if username in USERSDETAILS and USERSDETAILS[username] == password:
+        print("Account Login successful.")
         return True
     else:
-        print("Incorrect credentials. Login failed.")
+        print("Incorrect credentials. Login unsuccessful.")
         return False
 
 def display_dashboard(stock_price, stock_projection):
@@ -33,11 +33,11 @@ def main():
     while not login():
         pass
 
-    stock_price = 120.50
-    stock_projection = 130.00
+    stock_price = 122.50
+    stock_projection = 160.00
 
     display_dashboard(stock_price, stock_projection)
 
 if __name__ == '__main__':
-    app.run(debug=True)  # Added to run the Flask app
+    app.run(debug=True)
     main()
