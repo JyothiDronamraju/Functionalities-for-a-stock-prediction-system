@@ -50,7 +50,7 @@ header {
 	height: 60px;
 	width: 300px;
 	margin: 20px auto;
-	box-shadow: 10px 10px 30px rgb(254, 215, 188);
+	box-shadow: 10px 10px 30px rgb(179, 234, 228);
 	border-radius: 50px;
 	display: flex;
 	justify-content: space-around;
@@ -72,8 +72,8 @@ header {
 	width: 150px;
 	border-radius: 50px;
 	background-image: linear-gradient(to right,
-			rgb(255, 195, 110),
-			rgb(255, 146, 91));
+			rgb(110, 233, 255),
+			rgb(91, 255, 241));
 	position: absolute;
 	top: 20px;
 	left: 100px;
@@ -134,8 +134,8 @@ header {
 	width: 150px;
 	border-radius: 50px;
 	background-image: linear-gradient(to right,
-			rgb(255, 195, 110),
-			rgb(255, 146, 91));
+	rgb(110, 233, 255),
+	rgb(91, 255, 241));
 	font-size: 22px;
 	border: none;
 	cursor: pointer;
