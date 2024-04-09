@@ -112,15 +112,15 @@ p.copyright {
 }
 header h1 {
     margin: 0 auto;
-    max-width: 800px; /* Adjust the max-width as needed */
+    max-width: 800px; 
  }
 
 section {
     max-width: 800px; 
     margin: 0 auto;
 } 
-/* Adjust the width of the image */
+
 .center img {
-    max-width: 100%; /*Ensure the image doesn't overflow its container */
+    max-width: 100%; 
     height: auto;
 } 
