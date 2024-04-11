@@ -1,5 +1,6 @@
-USERSDETAILS = {'Admin': 'password123'}
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template
+
+USERS_DETAILS = {'Admin': 'password123'}
 
 app = Flask(__name__)
 
@@ -15,7 +16,7 @@ def login():
     username = input("Enter username: ")
     password = input("Enter password: ")
 
-    if username in USERSDETAILS and USERSDETAILS[username] == password:
+    if username in USERS_DETAILS and USERS_DETAILS[username] == password:
         print("Account Login successful.")
         return True
     else:
@@ -23,21 +24,19 @@ def login():
         return False
 
 def display_dashboard(stock_price, stock_projection):
-    print("\nStock Dashboard:")
-    print(f"Stock Price: ${stock_price}")
-    print(f"Projection: ${stock_projection}\n")
+    return f"Stock Price: ${stock_price}<br>Projection: ${stock_projection}"
 
+@app.route('/dashboard')
 def main():
     print("Welcome to the Stock Prediction System!")
 
-    while not login():
-        pass
-
-    stock_price = 122.50
-    stock_projection = 160.00
-
-    display_dashboard(stock_price, stock_projection)
+    if login():
+        stock_price = 122.50
+        stock_projection = 160.00
+        dashboard_info = display_dashboard(stock_price, stock_projection)
+        return dashboard_info
+    else:
+        return "Login unsuccessful. Please try again."
 
 if __name__ == '__main__':
     app.run(debug=True)
-    main()
