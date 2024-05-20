@@ -42,9 +42,9 @@
             display: block;
             margin-bottom: 10px;
         }
-
+         
         input[type="text"] {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -63,6 +63,20 @@
         button:hover {
             background-color: #555;
         }
+        .loader {
+            margin-top: 20px;
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -70,11 +84,54 @@
         <h1>Predict Stock Prices</h1>
     </header>
     <div class="container">
-        <form method="post">
+        
+        <form method="post" >
+
             <label for="symbol">Enter Stock Symbol:</label>
             <input type="text" id="symbol" name="symbol" required>
-            <button type="submit">Predict</button>
+            <button type="submit" onclick="predictStockPrice()">Predict</button>
         </form>
+        
+        <div id="prediction" style="display: none;"></div>
+        <div id="loader" class="loader" style="display: none;"></div>
+        <div id="loader2" style="display: none;">Loading...</div>
+
+        <script>
+            function predictStockPrice() {
+                var laoder = document.getElementById("loader");
+                var loader2 = document.getElementById("loader2");
+                var prediction = document.getElementById("prediction");
+
+
+
+                // Show the loader
+                loader.style.display = "block";
+                loader2.style.display = "block";
+
+              
+
+                // Generate random data until response is received
+                
+                var c = 0;
+                var pl = ["Collecting data", "transforming data", "normalizing data", "getting prediction"]
+
+                var interval = setInterval(function() {
+
+                    var randomData = Math.random().toFixed(2); // Generate random data
+                    loader2.innerHTML = "Current Stage: " + pl[c]; // Display the random data
+                    if(c < 3){
+                        c++;
+                    }
+                    // Check if response is received
+                    if (responseReceived) {
+                        clearInterval(interval); // Stop generating random data
+                        loader.style.display = "none"; // Hide the loader
+                        prediction.innerHTML = "Prediction: " + "stock price"; // Display the actual prediction
+                        prediction.style.display = "block"; // Show the prediction
+                    }
+                }, 1000); // Repeat every 1 second
+            }
+        </script>
     </div>
     <footer>
         <p>&copy; 2024 - Stock Predcition System. All rights reserved.</p>

@@ -1,136 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Predicted Stock Prices</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
 
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-        }
+      header {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+      }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-        }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+      }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
 
-        th, td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: center;
-        }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+      }
 
-        th {
-            background-color: #f2f2f2;
-        }
+      th {
+        background-color: #f2f2f2;
+      }
 
-        canvas {
-            margin: 20px auto;
-            display: block;
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-        }
+      canvas {
+        margin: 20px auto;
+        display: block;
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Predicted Stock Prices for {{ symbol }} | For next 30 days from {{ from_date }}</h1>
+      <h4>
+        Predicted Stock Prices for {{ symbol }} | For next 30 days from {{
+        from_date }}
+      </h4>
     </header>
-    <div class="container">
+
+    <div>
+      <div class="tabs" style="padding: 10px; background-color: white">
+        <button
+          class="tab"
+          id="tab1"
+          style="
+            border: 1px solid #ccc;
+            background-color: #f2f2f2;
+            padding: 8px;
+          "
+        >
+          Predctions & history
+        </button>
+        <button
+          class="tab"
+          id="tab2"
+          style="
+            border: 1px solid #ccc;
+            background-color: #f2f2f2;
+            padding: 8px;
+          "
+        >
+          Metricts
+        </button>
+        <button
+          class="tab"
+          id="tab3"
+          style="
+            border: 1px solid #ccc;
+            background-color: #f2f2f2;
+            padding: 8px;
+          "
+        >
+          Reasons
+        </button>
+
+        <a
+          href="/home"
+          style="
+            border: 1px solid #ccc;
+            background-color: #ffffff;
+            padding: 8px;
+          "
+        >
+          Back
+        </a>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 100px">
+      <div class="tab-content" id="content1">
+        <h2>Predctions & history {{ symbol }}</h2>
+        <div id="tradingview-chart"></div>
         <canvas id="priceChart"></canvas>
 
-        <table>
+        <div class="container">
+          <h2>Predicted Prices</h2>
+          <table>
             <thead>
-                <tr>
-                    <th>Day</th>
-                    <th>Predicted Price</th>
-                </tr>
+              <tr>
+                <th>Day</th>
+                <th>Predicted Price</th>
+              </tr>
             </thead>
             <tbody>
-                {% for day, price in predicted_prices %}
-                <tr>
-                    <td>{{ day }}</td>
-                    <td>{{ price }}</td>
-                </tr>
-                {% endfor %}
+              {% for day, price in predicted_prices %}
+              <tr>
+                <td>{{ day }}</td>
+                <td>{{ price }}</td>
+              </tr>
+              {% endfor %}
             </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-content container" id="content2" style="display: none">
+        <h2>Metrics after loading recent data into model</h2>
+        <table>
+          <tr>
+            <th>Metric</th>
+            <th>Value</th>
+          </tr>
+
+          <tr>
+            <td>Loss</td>
+            <td>{{ metrics.Loss }}</td>
+          </tr>
+          <tr>
+            <td>MAE</td>
+            <td>{{ metrics.MAE }}</td>
+          </tr>
+          <tr>
+            <td>RMSE</td>
+            <td>{{ metrics.RMSE }}</td>
+          </tr>
+          <tr>
+            <td>MAPE</td>
+            <td>{{ metrics.MAPE }}</td>
+          </tr>
         </table>
+        <img style="width: 100%" src="/static/30day.png" alt="30 Day Chart" />
+      </div>
+
+      <div class="tab-content container" id="content3" style="display: none">
+        <h4>News affecting current prediction</h4>
+        <ul>
+          {% for item in news %}
+          <li>
+            <h6>{{ item.title }}</h6>
+            <p style="font-size: smaller">Publisher: {{ item.publisher }}</p>
+            <p style="font-size: smaller">
+              <a href="{{ item.link }}">Read more</a>
+            </p>
+            {% if item.thumbnail %}
+            <!-- <img src="{{ item.thumbnail.resolutions[0].url }}" alt="Thumbnail" width="200" height="200"> -->
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
+    <script>
+      const tabs = document.querySelectorAll(".tab");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const tabId = tab.id;
+          activateTab(tabId);
+        });
+      });
+
+      function activateTab(tabId) {
+        tabs.forEach((tab) => {
+          tab.classList.remove("active");
+        });
+
+        tabContents.forEach((content) => {
+          content.style.display = "none";
+        });
+
+        const selectedTab = document.getElementById(tabId);
+        const selectedContent = document.getElementById(
+          `content${tabId.slice(3)}`
+        );
+        selectedTab.classList.add("active");
+        selectedContent.style.display = "block";
+      }
+    </script>
+
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <script>
+      new TradingView.widget({
+        width: "100%",
+        symbol: "{{ symbol }}",
+        interval: "15",
+        timezone: "Etc/UTC",
+        theme: "dark",
+        style: "3",
+        locale: "en",
+        toolbar_bg: "#f1f3f6",
+        enable_publishing: false,
+        allow_symbol_change: false,
+        container_id: "tradingview-chart",
+        hide_top_toolbar: true,
+        hide_volume: true,
+      });
+    </script>
+
     <footer>
-        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+      <p>&copy; Stock Prediction System. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        const predictedPrices = [
-            {% for _, price in predicted_prices %}
-            {{ price }},
-            {% endfor %}
-        ];
+      const predictedPrices = [
+          {% for _, price in predicted_prices %}
+          {{ price }},
+          {% endfor %}
+      ];
 
-        const days = Array.from({ length: predictedPrices.length }, (_, i) => i + 1);
+      const days = Array.from({ length: predictedPrices.length }, (_, i) => i + 1);
 
-        const ctx = document.getElementById('priceChart').getContext('2d');
+      const ctx = document.getElementById('priceChart').getContext('2d');
 
-        const chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: days,
-                datasets: [{
-                    label: 'Predicted Prices',
-                    data: predictedPrices,
-                    borderColor: 'blue',
-                    fill: false
-                }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Day'
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Price'
-                        }
-                    }]
-                }
-            }
-        });
+      const chart = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: days,
+              datasets: [{
+                  label: 'Predicted Prices',
+                  data: predictedPrices,
+                  borderColor: 'orange',
+                  fill: true,
+                  pointStyle: 'circle',
+                  pointRadius: 5,
+                  pointHoverRadius: 10
+              }]
+          },
+          options: {
+              scales: {
+                  xAxes: [{
+                      scaleLabel: {
+                          display: true,
+                          labelString: 'Day'
+                      }
+                  }],
+                  yAxes: [{
+                      scaleLabel: {
+                          display: true,
+                          labelString: 'Price'
+                      }
+                  }]
+              },
+              responsive: true, // Make the chart responsive
+              tooltips: {
+                  mode: 'index', // Show all tooltips at once
+                  intersect: false // Don't intersect tooltips with other elements
+              },
+              hover: {
+                  mode: 'nearest', // Highlight the nearest data point on hover
+                  intersect: true // Allow hover events to trigger on overlapping elements
+              }
+          }
+      });
     </script>
-</body>
+  </body>
 </html>
