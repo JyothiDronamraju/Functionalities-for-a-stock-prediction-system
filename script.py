@@ -40,3 +40,11 @@ def main():
 
 if __name__ == '__main__':
     app.run(debug=True)
+@app.route("/", methods=["GET", "POST"])
+def home():
+    if request.method == "POST":
+        ticker = request.form["ticker"]
+        stock_data = yf.download(ticker, start="2020-01-01", end="2024-01-01")
+        stock_data['Close'] = stock_data['Close'].fillna(method='ffill')
+        ts_data = stock_data['Close'].values.reshape(-1, 1)
+        ts_data_normalized = scaler.fit_transform(ts_data)
