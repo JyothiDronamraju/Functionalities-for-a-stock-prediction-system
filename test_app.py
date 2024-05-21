@@ -46,7 +46,7 @@ class TestFunctions(unittest.TestCase):
         X, y = create_dataset(data, window_size)
         self.assertEqual(X.shape, (95, 5))
         self.assertEqual(y.shape, (95,))
-
+        
     def test_save_plot_stock_trend(self):
         data = {
             'Close': np.random.random(100),
