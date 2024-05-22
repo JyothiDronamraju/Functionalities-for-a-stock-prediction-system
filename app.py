@@ -36,6 +36,8 @@ def predict_stock():
         end_date = datetime.now().strftime('%Y-%m-%d')
         start_date = (datetime.now() - timedelta(days=1000)).strftime('%Y-%m-%d')
         stockprice = yf.download(symbol, start=start_date, end=end_date)
+        if stockprice.empty:
+            return render_template('index.html', error = "Invalid Symbol")
         stock = yf.Ticker(symbol)
         news = stock.news
         data = stockprice['Close'].values.reshape(-1, 1)

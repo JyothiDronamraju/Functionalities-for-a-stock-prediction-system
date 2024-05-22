@@ -89,6 +89,7 @@
 
             <label for="symbol">Enter Stock Symbol:</label>
             <input type="text" id="symbol" name="symbol" required>
+            <p id="error" style="color: red;;">{{error}}</p>
             <button type="submit" onclick="predictStockPrice()">Predict</button>
         </form>
         
@@ -134,7 +135,7 @@
         </script>
     </div>
     <footer>
-        <p>&copy; 2024 - Stock Predcition System. All rights reserved.</p>
+        <p>&copy; Stock Prediction system</p>
     </footer>
 </body>
 </html>
