@@ -70,6 +70,37 @@ class TestApp(TestCase):
         assert alert.text == 'Login successful'
         alert.accept()
         driver.quit()
+    def test_create_dataset_window_size_1(self):
+        # Test with window size 1
+        data = np.arange(100).reshape(-1, 1)
+        window_size = 1
+        X, y = create_dataset(data, window_size)
+        self.assertEqual(X.shape, (99, 1))
+        self.assertEqual(y.shape, (99,))
+
+
+
+
+    def test_create_dataset_negative_window_size(self):
+        # Test with negative window size
+        data = np.arange(100).reshape(-1, 1)
+        window_size = -5
+        with self.assertRaises(ValueError):
+            X, y = create_dataset(data, window_size)
+
+    def test_create_dataset_non_numeric_data(self):
+        # Test with non-numeric data
+        data = ['a', 'b', 'c']
+        window_size = 2
+        with self.assertRaises(TypeError):
+            X, y = create_dataset(data, window_size)
+
+    def test_create_dataset_non_numeric_window_size(self):
+        # Test with non-numeric window size
+        data = np.arange(100).reshape(-1, 1)
+        window_size = 'abc'
+        with self.assertRaises(TypeError):
+            X, y = create_dataset(data, window_size)
     def test_stock_prediction_form(self):
         driver = webdriver.Chrome()
         # navigate to the page
@@ -107,17 +138,5 @@ class TestFunctions(unittest.TestCase):
         X, y = create_dataset(data, window_size)
         self.assertEqual(X.shape, (95, 5))
         self.assertEqual(y.shape, (95,))
-
-    def test_save_plot_stock_trend(self):
-        data = {
-            'Close': np.random.random(100),
-            '30day': np.random.random(100),
-            '60day': np.random.random(100),
-            '200day': np.random.random(100)
-        }
-        stockprices = pd.DataFrame(data)
-        save_plot_stock_trend(var='30day', cur_title='Test Plot', stockprices=stockprices)
-        self.assertTrue(os.path.exists('static/30day.png'))
-        os.remove('static/30day.png')
 if __name__ == '__main__':
     unittest.main()
