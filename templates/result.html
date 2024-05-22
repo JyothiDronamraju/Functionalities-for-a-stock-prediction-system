@@ -107,7 +107,17 @@
         >
           Reasons
         </button>
-
+        <button
+          class="tab"
+          id="tab4"
+          style="
+            border: 1px solid #ccc;
+            background-color: #f2f2f2;
+            padding: 8px;
+          "
+        >
+        Established plan
+        </button>
         <a
           href="/home"
           style="
@@ -177,7 +187,6 @@
         <h2>SHAP Image for the initial model</h2>
         <img src="/static/shap_summary_plot_main.png" alt="SHAP Image" style="width: 100%">
       </div>
-
       <div class="tab-content container" id="content3" style="display: none">
         <h4>News affecting current prediction</h4>
         <ul>
@@ -195,6 +204,17 @@
           {% endfor %}
         </ul>
       </div>
+
+      <div class="tab-content container" id="content4" style="display: none">
+        <h2>Established plan and continous monitering</h2>
+        <p>Stock prediction system retrains the model based on live data from market every time to give prediction and monitors model performance using the metrics .</p>
+        <h2>Workings of the established plan</h2>
+        <img style="width: 100%" src="/static/img/a1.jpg" alt="a1" />
+        <img style="width: 100%" src="/static/img/a2.jpg" alt="a2" />
+        <img style="width: 100%" src="/static/img/a3.jpg" alt="a3" />
+        <img style="width: 100%" src="/static/img/a4.jpg" alt="a4" />
+      </div>
+
     </div>
     <script>
       const tabs = document.querySelectorAll(".tab");
@@ -245,7 +265,7 @@
     </script>
 
     <footer>
-      <p>&copy; Stock Prediction system</p>
+      <p>&copy; 2024 Your Company Name. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

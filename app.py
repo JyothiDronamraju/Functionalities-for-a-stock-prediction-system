@@ -18,7 +18,7 @@ def create_dataset(data, window_size):
     return np.array(X), np.array(y)
 
 def save_plot_stock_trend(var, cur_title, stockprices):
-    ax = stockprices[["Close", var, "60days", "200day"]].plot(figsize=(20, 10))
+    ax = stockprices[["Close", var, "200day"]].plot(figsize=(20, 10))
     plt.grid(False)
     plt.title(cur_title)
     plt.axis("tight")
